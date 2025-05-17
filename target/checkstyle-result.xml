@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="9.3">
+<file name="/Users/yuliazhukova/IdeaProjects/Home_work_22.04.25/src/main/java/utils/ActionUtils.java">
+</file>
+<file name="/Users/yuliazhukova/IdeaProjects/Home_work_22.04.25/src/main/java/utils/Waiters.java">
+</file>
+<file name="/Users/yuliazhukova/IdeaProjects/Home_work_22.04.25/src/main/java/utils/AnnotationUtils.java">
+</file>
+<file name="/Users/yuliazhukova/IdeaProjects/Home_work_22.04.25/src/main/java/exceptions/NotValidClassPathException.java">
+</file>
+<file name="/Users/yuliazhukova/IdeaProjects/Home_work_22.04.25/src/main/java/exceptions/BrowserNotSupportedException.java">
+</file>
+<file name="/Users/yuliazhukova/IdeaProjects/Home_work_22.04.25/src/main/java/extensions/UIExtension.java">
+</file>
+<file name="/Users/yuliazhukova/IdeaProjects/Home_work_22.04.25/src/main/java/annotations/Component.java">
+</file>
+<file name="/Users/yuliazhukova/IdeaProjects/Home_work_22.04.25/src/main/java/annotations/UrlTemplate.java">
+</file>
+<file name="/Users/yuliazhukova/IdeaProjects/Home_work_22.04.25/src/main/java/annotations/Path.java">
+</file>
+<file name="/Users/yuliazhukova/IdeaProjects/Home_work_22.04.25/src/main/java/components/AbsBaseBlock.java">
+</file>
+<file name="/Users/yuliazhukova/IdeaProjects/Home_work_22.04.25/src/main/java/components/popups/EducationComponent.java">
+</file>
+<file name="/Users/yuliazhukova/IdeaProjects/Home_work_22.04.25/src/main/java/components/popups/IPopup.java">
+</file>
+<file name="/Users/yuliazhukova/IdeaProjects/Home_work_22.04.25/src/main/java/components/popups/HeaderEducationComponent.java">
+</file>
+<file name="/Users/yuliazhukova/IdeaProjects/Home_work_22.04.25/src/main/java/components/popups/AuthPopup.java">
+</file>
+<file name="/Users/yuliazhukova/IdeaProjects/Home_work_22.04.25/src/main/java/common/AbsCommon.java">
+</file>
+<file name="/Users/yuliazhukova/IdeaProjects/Home_work_22.04.25/src/main/java/modules/GuicePagesModule.java">
+</file>
+<file name="/Users/yuliazhukova/IdeaProjects/Home_work_22.04.25/src/main/java/modules/GuiceComponentsModule.java">
+</file>
+<file name="/Users/yuliazhukova/IdeaProjects/Home_work_22.04.25/src/main/java/data/CourcesData.java">
+</file>
+<file name="/Users/yuliazhukova/IdeaProjects/Home_work_22.04.25/src/main/java/data/CourceTypeData.java">
+</file>
+<file name="/Users/yuliazhukova/IdeaProjects/Home_work_22.04.25/src/main/java/pages/CatalogPage.java">
+</file>
+<file name="/Users/yuliazhukova/IdeaProjects/Home_work_22.04.25/src/main/java/pages/AbsBasePage.java">
+</file>
+<file name="/Users/yuliazhukova/IdeaProjects/Home_work_22.04.25/src/main/java/pages/MainPage.java">
+</file>
+<file name="/Users/yuliazhukova/IdeaProjects/Home_work_22.04.25/src/main/java/listeners/MouseListener.java">
+</file>
+<file name="/Users/yuliazhukova/IdeaProjects/Home_work_22.04.25/src/main/java/factory/settings/IBrowserSettings.java">
+</file>
+<file name="/Users/yuliazhukova/IdeaProjects/Home_work_22.04.25/src/main/java/factory/settings/ChromeSettings.java">
+</file>
+<file name="/Users/yuliazhukova/IdeaProjects/Home_work_22.04.25/src/main/java/factory/WebDriverFactory.java">
+</file>
+<file name="/Users/yuliazhukova/IdeaProjects/Home_work_22.04.25/src/test/java/main/MainPage_Test.java">
+</file>
+<file name="/Users/yuliazhukova/IdeaProjects/Home_work_22.04.25/src/test/java/main/CatalogPage_Test.java">
+</file>
+</checkstyle>
