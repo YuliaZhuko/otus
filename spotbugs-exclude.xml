@@ -1,0 +1,7 @@
+<FindBugsFilter>
+    <!-- Исключить предупреждения для всех полей в пакетах dto -->
+    <Match>
+        <Package name="~dto.*" />
+        <Bug pattern="UUF_UNUSED_FIELD" />
+    </Match>
+</FindBugsFilter>
