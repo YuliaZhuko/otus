@@ -25,9 +25,9 @@ public class CatalogPage_Test {
   @DisplayName("Open course and check title")
   public void checkCourceName() {
     catalogPage.open("catalog", "courses");
-    catalogPage.findCourceByName(CourcesData.Development_of_application_software_on_Qt_and_OS_Aurora_);
-    catalogPage.clickCourse(CourcesData.Development_of_application_software_on_Qt_and_OS_Aurora_);
-    catalogPage.checkCoursePageTitle(CourcesData.Development_of_application_software_on_Qt_and_OS_Aurora_);
+    catalogPage.findCourceByName(CourcesData.Python_Developer);
+    catalogPage.clickCourse(CourcesData.Python_Developer);
+    catalogPage.checkCoursePageTitle(CourcesData.Python_Developer);
   }
 
 
@@ -41,16 +41,15 @@ public class CatalogPage_Test {
 
     catalogPage.assertCoursesMatch(
         List.of(
-            CourcesData.Product_Marketing_Manager_в_IT,
-            CourcesData.CPO_Chief_Product_Officer,
-            CourcesData.Optimization_of_business_processes
+            CourcesData.Load_testing
         ),
         earliestCourses
     );
 
     catalogPage.assertCoursesMatch(
         List.of(
-            CourcesData.Databases
+            CourcesData.Golang_Developer_Professional,
+            CourcesData.React_js_Developer
         ),
         latestCourses
     );
