@@ -1,9 +1,10 @@
 package pages;
 
 import annotations.Path;
-import org.openqa.selenium.WebDriver;
+import com.google.inject.Inject;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import scope.ScenScoped;
 import java.util.List;
 
 @Path("/")
@@ -12,9 +13,9 @@ public class MainPage extends AbsBasePage {
   @FindBy(xpath = "//section[1]/div[1]/div[2]/div/div/div")
   private List<WebElement> categoryList;
 
-
-  public MainPage(WebDriver driver) {
-    super(driver);
+  @Inject
+  public MainPage(ScenScoped scenScoped) {
+    super(scenScoped.getDriver());
   }
 
   public boolean isCategorySelected(WebElement element) {

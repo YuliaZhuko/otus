@@ -11,12 +11,10 @@ import java.util.List;
 
 public class AbsCommon {
 
-  protected WebDriver driver;
-
-  protected Waiters waiters;
-
-  protected AnnotationUtils annotationUtils;
   public ActionUtils actionUtils;
+  protected WebDriver driver;
+  protected Waiters waiters;
+  protected AnnotationUtils annotationUtils;
 
 
   public AbsCommon(WebDriver driver) {

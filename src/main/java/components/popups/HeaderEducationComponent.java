@@ -1,20 +1,22 @@
 package components.popups;
 
 import annotations.Component;
+import com.google.inject.Inject;
 import components.AbsBaseBlock;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import scope.ScenScoped;
 
-@Component("xpath://*[@id='__next']/div[2]/div[3]")
+@Component("xpath://*[@id=\"__next\"]/div[1]/div[1]/div/nav/div[2]/span")
 public class HeaderEducationComponent extends AbsBaseBlock {
-
-  public HeaderEducationComponent(WebDriver driver) {
-    super(driver);
-  }
 
   @FindBy(xpath = "//nav/div[2]/span")
   private WebElement educationField;
+
+  @Inject
+  public HeaderEducationComponent(ScenScoped scenScoped) {
+    super(scenScoped.getDriver());
+  }
 
   public void moveToEducationField() {
     waitForComponentVisibility();

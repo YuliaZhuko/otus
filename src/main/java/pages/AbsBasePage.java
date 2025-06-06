@@ -7,11 +7,11 @@ import org.openqa.selenium.WebDriver;
 import java.lang.annotation.Annotation;
 
 public abstract class AbsBasePage extends AbsCommon {
+  private String baseUrl = System.getProperty("base.url");
+
   public AbsBasePage(WebDriver driver) {
     super(driver);
   }
-
-  private String baseUrl = System.getProperty("base.url");
 
   private <T extends Annotation> T getAnnotationInstance(Class<T> annotationClass, boolean isException) {
     Class<?> clazz = getClass();

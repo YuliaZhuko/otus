@@ -1,4 +1,4 @@
-package main.otus.steps.hooks;
+package main.otus.hooks;
 
 import com.google.inject.Inject;
 import io.cucumber.java.After;

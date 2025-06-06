@@ -3,19 +3,20 @@ package pages;
 
 import annotations.Path;
 import annotations.UrlTemplate;
+import com.google.inject.Inject;
 import data.CourcesData;
+import org.assertj.core.api.Assertions;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import scope.ScenScoped;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
-import org.assertj.core.api.Assertions;
 
 @Path("/")
 @UrlTemplate("/$1/$2/")
@@ -23,8 +24,9 @@ public class CatalogPage extends AbsBasePage {
   String nameCourseLocator = "//h6/div[text()='%s']";
   String baseCoursePageTitle = "//h1";
 
-  public CatalogPage(WebDriver driver) {
-    super(driver);
+  @Inject
+  public CatalogPage(ScenScoped scenScoped) {
+    super(scenScoped.getDriver());
   }
 
 
