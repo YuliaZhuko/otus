@@ -1,4 +1,4 @@
-package main.otus;
+package otus;
 
 
 import static io.cucumber.core.options.Constants.GLUE_PROPERTY_NAME;

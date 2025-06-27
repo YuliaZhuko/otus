@@ -1,5 +1,4 @@
-package main.otus.steps;
-
+package steps;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.google.inject.Inject;
@@ -7,6 +6,7 @@ import components.popups.EducationComponent;
 import components.popups.HeaderEducationComponent;
 import io.cucumber.java.ru.Пусть;
 import io.cucumber.java.ru.Тогда;
+import org.openqa.selenium.WebDriver;
 import pages.MainPage;
 import scope.ScenScoped;
 
@@ -18,6 +18,7 @@ public class MainPageSteps {
 
   @Inject
   ScenScoped scenScoped;
+  WebDriver driver = scenScoped.getDriver();
 
   @Inject
   EducationComponent educationComponent;

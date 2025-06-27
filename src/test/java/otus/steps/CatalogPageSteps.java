@@ -1,4 +1,4 @@
-package main.otus.steps;
+package steps;
 
 import com.google.inject.Inject;
 import data.CourcesData;
@@ -20,7 +20,7 @@ public class CatalogPageSteps {
   @Inject
   ScenScoped scenScoped;
 
-  //WebDriver driver = scenScoped.getDriver();
+  WebDriver driver = scenScoped.getDriver();
 
   @Пусть("Открыта страница каталога курсов")
   public void openCatalogPage() {
