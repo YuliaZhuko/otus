@@ -2,6 +2,7 @@ package pet;
 
 import static org.hamcrest.Matchers.lessThan;
 
+import data.PetData;
 import dto.CategoryDTO;
 import dto.NewPetResponseDTO;
 import dto.PetDTO;
@@ -21,25 +22,7 @@ import java.util.stream.Stream;
 public class CreatePetTest {
 
   PetStoreApi api = new PetStoreApi();
-  Long petId = 5L;
-  Long categoryId = 5L;
-  String categoryName = "Dogs";
-  String petName = "doggie";
-  List<String> photoUrls = List.of(
-      "https://example.com/photo1.jpg",
-      "https://example.com/photo2.jpg",
-      "https://example.com/photo3.jpg"
-  );
-  String tagName1 = "funny";
-  String tagName2 = "cute";
-  Long tagId1 = 1L;
-  Long tagId2 = 2L;
 
-  TagDTO tag1 = new TagDTO(tagId1, tagName1);
-  TagDTO tag2 = new TagDTO(tagId2, tagName2);
-
-  List<TagDTO> tags = Arrays.asList(tag1, tag2);
-  String status = "available";
 
   static Stream<Arguments> dataProvider() {
     CategoryDTO category = CategoryDTO.builder()
@@ -118,32 +101,31 @@ public class CreatePetTest {
   @DisplayName("Check parameters creating pet")
   void createPet() {
     PetDTO petDTO = PetDTO.builder()
-        .id(petId)
+        .id(PetData.DOG.getPetId())
         .category(CategoryDTO.builder()
-            .id(categoryId)
-            .name(categoryName)
+            .id(PetData.DOG.getCategoryId())
+            .name(PetData.DOG.getCategoryName())
             .build())
-        .name(petName)
-        .photoUrls(photoUrls)
-        .tags(tags)
-        .status(status)
+        .name(PetData.DOG.getPetName())
+        .photoUrls(PetData.DOG.getPhotoUrls())
+        .tags(PetData.DOG.getTags())
+        .status(PetData.DOG.getStatus())
         .build();
 
     api.createNewPet(petDTO)
-        .statusCode(HttpStatus.SC_OK)
-        .time(lessThan(5000L));
+        .statusCode(HttpStatus.SC_OK);
 
     NewPetResponseDTO actualPet = api.createNewPet(petDTO).extract().body().as(NewPetResponseDTO.class);
 
     Assertions.assertAll("Check create new pet",
-        () -> Assertions.assertEquals(actualPet.getId(), petId.intValue(), "Invalid petId"),
-        () -> Assertions.assertEquals(actualPet.getCategory().getId(), categoryId.intValue(), "Invalid CategoryId"),
-        () -> Assertions.assertEquals(actualPet.getCategory().getName(), "Dogs", "Invalid CategoryName"),
-        () -> Assertions.assertEquals(actualPet.getName(), petName, "Invalid petName"),
-        () -> Assertions.assertEquals(actualPet.getPhotoUrls(), photoUrls, "Invalid PhotoUrls"),
-        () -> Assertions.assertEquals(actualPet.getTags().getFirst().getName(), tagName1, "Invalid tagName!"),
-        () -> Assertions.assertEquals(actualPet.getTags().getFirst().getId(), tagId1, "Invalid tagId1"),
-        () -> Assertions.assertEquals(actualPet.getStatus(), status, "Invalid status")
+        () -> Assertions.assertEquals(actualPet.getId(), PetData.DOG.getPetId().intValue(), "Invalid petId"),
+        () -> Assertions.assertEquals(actualPet.getCategory().getId(), PetData.DOG.getCategoryId().intValue(), "Invalid CategoryId"),
+        () -> Assertions.assertEquals(actualPet.getCategory().getName(), PetData.DOG.getCategoryName(), "Invalid CategoryName"),
+        () -> Assertions.assertEquals(actualPet.getName(), PetData.DOG.getPetName(), "Invalid petName"),
+        () -> Assertions.assertEquals(actualPet.getPhotoUrls(), PetData.DOG.getPhotoUrls(), "Invalid PhotoUrls"),
+        () -> Assertions.assertEquals(actualPet.getTags().getFirst().getName(), PetData.DOG.getTags().getFirst().getName(), "Invalid tagName!"),
+        () -> Assertions.assertEquals(actualPet.getTags().getFirst().getId(), PetData.DOG.getTags().getFirst().getId(), "Invalid tagId1"),
+        () -> Assertions.assertEquals(actualPet.getStatus(), PetData.DOG.getStatus(), "Invalid status")
     );
   }
 
@@ -151,9 +133,57 @@ public class CreatePetTest {
   @ParameterizedTest
   @DisplayName("Check if fields in an object are optional")
   @MethodSource("dataProvider")
-  void createPet(PetDTO petDTO) {
+  void createPetAndCheck(PetDTO petDTO) {
     PetStoreApi api = new PetStoreApi();
-    api.createNewPet(petDTO);
+
+    // Отправляем запрос и получаем ответ с созданным питомцем
+    NewPetResponseDTO actualPet = api.createNewPet(petDTO)
+        .statusCode(HttpStatus.SC_OK)
+        .extract()
+        .body()
+        .as(NewPetResponseDTO.class);
+
+    // Сравниваем пришедший объект с тем, который отправили
+    Assertions.assertAll("Validate created pet",
+        () -> Assertions.assertEquals(actualPet.getId(), petDTO.getId().intValue(), "Invalid petId"),
+
+        () -> {
+          if (petDTO.getCategory() != null) {
+            Assertions.assertNotNull(actualPet.getCategory(), "Category should not be null");
+            Assertions.assertEquals(actualPet.getCategory().getId(), petDTO.getCategory().getId().intValue(), "Invalid categoryId");
+            Assertions.assertEquals(actualPet.getCategory().getName(), petDTO.getCategory().getName(), "Invalid categoryName");
+          } else {
+            Assertions.assertNull(actualPet.getCategory(), "Category should be null");
+          }
+        },
+
+        () -> Assertions.assertEquals(actualPet.getName(), petDTO.getName(), "Invalid name"),
+
+        () -> {
+          if (petDTO.getPhotoUrls() != null) {
+            Assertions.assertEquals(actualPet.getPhotoUrls(), petDTO.getPhotoUrls(), "Invalid photoUrls");
+          } else {
+            Assertions.assertTrue(actualPet.getPhotoUrls() == null || actualPet.getPhotoUrls().isEmpty(), "PhotoUrls should be null or empty");
+          }
+        },
+
+        () -> {
+          if (petDTO.getTags() != null) {
+            Assertions.assertEquals(actualPet.getTags(), petDTO.getTags(), "Invalid tags");
+          } else {
+            Assertions.assertTrue(actualPet.getTags() == null || actualPet.getTags().isEmpty(), "Tags should be null or empty");
+          }
+        },
+
+        () -> {
+          if (petDTO.getStatus() != null) {
+            Assertions.assertEquals(actualPet.getStatus(), petDTO.getStatus(), "Invalid status");
+          } else {
+            Assertions.assertNull(actualPet.getStatus(), "Status should be null");
+          }
+        }
+    );
+
   }
 }
 

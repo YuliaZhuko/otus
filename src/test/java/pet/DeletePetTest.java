@@ -3,10 +3,13 @@ package pet;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.lessThan;
 
+import data.PetData;
 import dto.CategoryDTO;
 import dto.DeletePetResponseDTO;
 import dto.PetDTO;
 import dto.TagDTO;
+import io.restassured.RestAssured;
+import io.restassured.parsing.Parser;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -16,17 +19,32 @@ import java.util.List;
 
 public class DeletePetTest {
   PetStoreApi api = new PetStoreApi();
-  int petId = 5;
+  PetDTO petDTO = PetDTO.builder()
+      .id(PetData.DOG.getPetId())
+      .category(CategoryDTO.builder()
+          .id(PetData.DOG.getCategoryId())
+          .name(PetData.DOG.getCategoryName())
+          .build())
+      .name(PetData.DOG.getPetName())
+      .photoUrls(PetData.DOG.getPhotoUrls())
+      .tags(PetData.DOG.getTags())
+      .status(PetData.DOG.getStatus())
+      .build();
+
   int code = 200;
   String type = "unknown";
-  String message = String.valueOf(petId);
+  String message = String.valueOf(PetData.DOG.getPetId());
+
+  static void setup() {
+    RestAssured.defaultParser = Parser.JSON;
+  }
 
   //Тест проверяет параметры ответа после удаления питомца
   @Test
   @DisplayName("Check response after delete pet")
   void deletePet() {
 
-    DeletePetResponseDTO deletePet = api.deletePet(petId).extract().body().as(DeletePetResponseDTO.class);
+    DeletePetResponseDTO deletePet = api.deletePet(PetData.DOG.getPetId().intValue()).extract().body().as(DeletePetResponseDTO.class);
     Assertions.assertAll("Check create new pet",
         () -> Assertions.assertEquals(deletePet.getCode(), code, "Invalid code"),
         () -> Assertions.assertEquals(deletePet.getType(), type, "Invalid type"),
