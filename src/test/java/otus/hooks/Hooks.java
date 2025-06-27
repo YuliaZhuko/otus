@@ -9,13 +9,12 @@ import scope.ScenScoped;
 public class Hooks {
 
   @Inject
-  private ScenScoped scenScoped;
+  ScenScoped scenScoped;
 
   @After
   public void after() {
-    WebDriver driver = scenScoped.getDriver();
-    if (driver != null) {
-      driver.quit();
+    if (scenScoped.getDriver() != null) {
+      scenScoped.getDriver().quit();
     }
   }
 }

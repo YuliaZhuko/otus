@@ -1,11 +1,10 @@
-package steps;
+package otus.steps;
 
 import com.google.inject.Inject;
 import data.CourcesData;
 import io.cucumber.java.ru.Если;
 import io.cucumber.java.ru.Пусть;
 import io.cucumber.java.ru.Тогда;
-import org.openqa.selenium.WebDriver;
 import pages.CatalogPage;
 import scope.ScenScoped;
 import java.util.List;
@@ -20,8 +19,6 @@ public class CatalogPageSteps {
   @Inject
   ScenScoped scenScoped;
 
-  WebDriver driver = scenScoped.getDriver();
-
   @Пусть("Открыта страница каталога курсов")
   public void openCatalogPage() {
     catalogPage.open("catalog", "courses");
@@ -29,7 +26,7 @@ public class CatalogPageSteps {
 
   @Пусть("Найти курс по названию")
   public void findCourseByName() {
-    catalogPage.findCourceByName(CourcesData.Python_Developer);
+    catalogPage.findCourceByName(CourcesData.Fullstack_developer);
   }
 
   @Пусть("Собрать со страницы все курсы и их даты")
@@ -39,12 +36,12 @@ public class CatalogPageSteps {
 
   @Если("Кликнуть по плитке курса")
   public void clickCourse() {
-    catalogPage.clickCourse(CourcesData.Python_Developer);
+    catalogPage.clickCourse(CourcesData.Fullstack_developer);
   }
 
   @Тогда("Страница курса успешно открыта")
   public void checkCoursePageTitle() {
-    catalogPage.checkCoursePageTitle(CourcesData.Python_Developer);
+    catalogPage.checkCoursePageTitle(CourcesData.Fullstack_developer);
   }
 
   @Тогда("Найти среди курсов самые ранние и проверить совпадают ли они с ожидаемыми")
@@ -53,7 +50,7 @@ public class CatalogPageSteps {
     Map<String, String> earliestCourses = catalogPage.findCoursesWithEarliestDate(coursesMap);
     catalogPage.assertCoursesMatch(
         List.of(
-            CourcesData.Python_QA_Engineer
+            CourcesData.STO_technical_director
         ),
         earliestCourses
     );
@@ -65,9 +62,8 @@ public class CatalogPageSteps {
     Map<String, String> latestCourses = catalogPage.findCoursesWithLatestDate(coursesMap);
     catalogPage.assertCoursesMatch(
         List.of(
-            CourcesData.Golang_Developer_Professional,
-            CourcesData.React_js_Developer,
-            CourcesData.Enterprise_Architect
+            CourcesData.Administrator_Linux_Professional,
+            CourcesData.MLOps
         ),
         latestCourses
     );

@@ -1,4 +1,4 @@
-package steps;
+package otus.steps;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import com.google.inject.Inject;
@@ -18,7 +18,6 @@ public class MainPageSteps {
 
   @Inject
   ScenScoped scenScoped;
-  WebDriver driver = scenScoped.getDriver();
 
   @Inject
   EducationComponent educationComponent;

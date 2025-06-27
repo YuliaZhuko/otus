@@ -3,8 +3,6 @@ package scope;
 import factory.WebDriverFactory;
 import io.cucumber.guice.ScenarioScoped;
 import org.openqa.selenium.WebDriver;
-import java.util.HashMap;
-import java.util.Map;
 
 @ScenarioScoped
 public class ScenScoped {
@@ -14,6 +12,5 @@ public class ScenScoped {
   public WebDriver getDriver() {
     return this.driver;
   }
-  private final Map<String,Object> storeObject = new HashMap<>();
 
 }

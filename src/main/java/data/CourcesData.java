@@ -4,11 +4,11 @@ import java.time.LocalDate;
 
 public enum CourcesData {
 
-  Python_Developer("Python Developer", CourceTypeData.Programmer, LocalDate.parse("2025-05-28")),
-  Python_QA_Engineer("Python QA Engineer", CourceTypeData.Programmer, LocalDate.parse("2025-05-27")),
-  Golang_Developer_Professional("Golang Developer. Professional", CourceTypeData.Programmer, LocalDate.parse("2025-05-29")),
-  React_js_Developer("React.js Developer", CourceTypeData.Programmer, LocalDate.parse("2025-05-29")),
-  Enterprise_Architect("Enterprise Architect", CourceTypeData.Programmer, LocalDate.parse("2025-05-29"));
+  Fullstack_developer("Fullstack developer", CourceTypeData.Programmer, LocalDate.parse("2025-06-25")),
+  STO_technical_director("CTO / Технический директор", CourceTypeData.Programmer, LocalDate.parse("2025-05-29")),
+  Administrator_Linux_Professional("Administrator Linux. Professional", CourceTypeData.Programmer, LocalDate.parse("2025-06-26")),
+  MLOps("MLOps", CourceTypeData.Programmer, LocalDate.parse("2025-06-26"));
+
 
   private String name;
   private CourceTypeData courceTypeData;

@@ -1,10 +1,12 @@
 UI Testing Framework
-This project is a UI testing framework built with Selenium WebDriver, JUnit 5, and Google Guice for dependency injection. It includes reusable components and pre-configured modules for efficient and scalable test automation.
+This project is a UI testing framework built with Selenium WebDriver, JUnit 5, and Google Guice for dependency
+injection. It includes reusable components and pre-configured modules for efficient and scalable test automation.
 
 Project Structure
 extensions/: Contains test extensions, such as UIExtension, for handling setup and teardown logic.
 factory/: Includes WebDriverFactory, responsible for managing WebDriver instances.
-modules/: Contains Guice modules (GuicePagesModule and GuiceComponentsModule) to inject dependencies like page objects and components.
+modules/: Contains Guice modules (GuicePagesModule and GuiceComponentsModule) to inject dependencies like page objects
+and components.
 pages/: Contains page classes such as MainPage, CatalogPage.
 components/: Includes reusable UI components like EducationComponent and HeaderEducationComponent.
 Prerequisites
@@ -45,17 +47,21 @@ Reporting
 By default, Maven generates test reports in the following location:
 target/surefire-reports/
 Key Classes
+
 1. UIExtension
-   This class sets up the WebDriver and injects the required page objects and components before each test using Guice dependency injection. It also handles cleanup after tests.
+   This class sets up the WebDriver and injects the required page objects and components before each test using Guice
+   dependency injection. It also handles cleanup after tests.
 
 2. WebDriverFactory
    Manages WebDriver instance creation based on the specified browser type. Currently, it supports:
 
 Chrome
 Throws BrowserNotSupportedException for unsupported browsers.
+
 3. Guice Modules
    GuicePagesModule: Configures page objects for dependency injection.
    GuiceComponentsModule: Configures reusable UI components for dependency injection.
 4. Page Classes and Components
    Page Classes: Represent specific pages of the application (MainPage, CoursesPage, etc.).
-   UI Components: Reusable building blocks, such as headers or navigation fields (HeaderComponent, TrainingComponent, etc.).
+   UI Components: Reusable building blocks, such as headers or navigation fields (HeaderComponent, TrainingComponent,
+   etc.).
