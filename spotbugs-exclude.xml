@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FindBugsFilter>
+
+    <!-- Игнорировать все EI_EXPOSE_REP / EI_EXPOSE_REP2 в AbsCommon.page -->
+    <Match>
+        <Class name="abscommon.AbsCommon"/>
+        <Field name="page"/>
+        <Bug code="EI2"/>
+    </Match>
+
+    <!-- Игнорировать EI_EXPOSE_REP2 для GuiceComponentModule.page -->
+    <Match>
+        <Class name="modules.GuiceComponentModule"/>
+        <Field name="page"/>
+        <Bug code="EI2"/>
+    </Match>
+
+    <!-- Игнорировать EI_EXPOSE_REP2 для GuicePagesModule.page -->
+    <Match>
+        <Class name="modules.GuicePagesModule"/>
+        <Field name="page"/>
+        <Bug code="EI2"/>
+    </Match>
+
+    <!-- Игнорировать EI_EXPOSE_REP (возврат teacherPopup) -->
+    <Match>
+        <Class name="pages.OtusLessonsPage"/>
+        <Method name="clickTeacherBox"/>
+        <Bug code="EI"/>
+    </Match>
+
+</FindBugsFilter>
