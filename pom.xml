@@ -110,6 +110,19 @@
                         <browser>chrome</browser>
                         <base.url>https://petstore.swagger.io/v2/</base.url>
                     </systemPropertyVariables>
+                    <properties>
+                        <property>
+                            <name>parallel</name>
+                            <value>methods</value>
+                        </property>
+                        <property>
+                            <name>threadCount</name>
+                            <value>4</value>
+                        </property>
+                    </properties>
+                    <includes>
+                        <include>**/*Test.java</include>
+                    </includes>
                 </configuration>
             </plugin>
             <plugin>
