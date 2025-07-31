@@ -1,0 +1,13 @@
+- hosts: server
+  remote_user: "{{ username }}"
+  become: yes
+
+  vars:
+    username: julia
+    chrome_versions:
+      - "128.0"
+      - "127.0"
+
+  roles:
+    - docker_install
+    - docker_compose

@@ -1,0 +1,14 @@
+{
+  "chrome": {
+    "default": "{{ chrome_versions[0] }}",
+    "versions": {
+      {% for version in chrome_versions %}
+      "{{ version }}": {
+        "image": "selenoid/chrome:{{ version }}",
+        "port": "4444",
+        "path": "/"
+      }{% if not loop.last %},{% endif %}
+      {% endfor %}
+    }
+   }
+}

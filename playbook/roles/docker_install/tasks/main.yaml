@@ -1,0 +1,57 @@
+- name: Remove old Docker keys and repo
+  file:
+    path: "{{ item }}"
+    state: absent
+  loop:
+    - /etc/apt/keyrings/docker.asc
+    - /etc/apt/sources.list.d/download_docker_com_linux_ubuntu.list
+
+- name: Update APT cache
+  apt:
+    update_cache: yes
+
+- name: Install prerequisite packages
+  apt:
+    name: curl
+    state: present
+
+- name: Add Docker GPG key
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+- name: Add Docker repository
+  apt_repository:
+    repo: "deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_distribution_release }} stable"
+    state: present
+
+- name: Update APT cache again
+  apt:
+    update_cache: yes
+
+- name: Install Docker packages
+  apt:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - docker-ce
+    - docker-ce-cli
+    - containerd.io
+
+- name: Enable Docker service
+  service:
+    name: docker
+    state: started
+    enabled: yes
+
+- name: Add user to docker group
+  user:
+    name: "{{ ansible_user_id }}"
+    groups: docker
+    append: yes
+
+- name: Set docker.sock permissions
+  file:
+    path: /var/run/docker.sock
+    state: file
+    mode: "0666"

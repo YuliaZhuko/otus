@@ -1,0 +1,26 @@
+- name: Create browsers.json file
+  template:
+    src: browsers.json.j2
+    dest: /home/{{ username }}/grid-router/browsers.json
+  vars:
+    chrome_version: "{{ browsers_versions_chrome }}"
+    firefox_version: "{{ browsers.version.firefox }}"
+
+- name: Copy docker-compose.yml template to remote server
+  template:
+    src: docker-compose.yml.j2
+    dest: /home/{{ username }}/docker-compose.yml
+
+- name: Reset environment for docker compose (safe xargs)
+  shell: docker ps -aq | xargs --no-run-if-empty docker rm -f
+
+- name: Run docker compose file
+  shell: docker compose -f /home/{{ username }}/docker-compose.yml up -d
+
+- name: Check containers state
+  shell: docker ps
+  register: docker_output
+
+- name: Show running containers
+  debug:
+    var: docker_output.stdout
