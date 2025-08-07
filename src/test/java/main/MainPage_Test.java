@@ -27,8 +27,6 @@ public class MainPage_Test {
   @Inject
   private CatalogPage catalogPage;
 
-  SoftAssertions softAssert = new SoftAssertions();
-
   @Inject
   EducationComponent educationComponent;
 

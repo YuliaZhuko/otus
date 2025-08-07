@@ -11,7 +11,7 @@ public abstract class AbsBasePage extends AbsCommon {
     super(driver);
   }
 
-  private String baseUrl = System.getProperty("base.url");
+  private String baseUrl = System.getProperty("base.url","https://otus.ru");
 
   private <T extends Annotation> T getAnnotationInstance(Class<T> annotationClass, boolean isException) {
     Class<?> clazz = getClass();

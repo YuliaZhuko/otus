@@ -11,6 +11,7 @@ import org.jsoup.select.Elements;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -51,8 +52,10 @@ public class CatalogPage extends AbsBasePage {
   }
 
 
-  public Map<String, String> findDataOnPage(String html) {
-    Document doc = Jsoup.parse(html);
+  public Map<String, String> findDataOnPage() throws IOException {
+
+    Document doc = Jsoup.connect("https://otus.ru/catalog/courses").get();
+
 
     // Найти все карточки курсов
     Elements courseCards = doc.select("a.sc-zzdkm7-0"); // <-- класс карточки курса

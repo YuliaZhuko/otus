@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 
 public class GuiceComponentsModule extends AbstractModule {
 
-  private WebDriver driver = null;
+  private final WebDriver driver;
 
   public GuiceComponentsModule(WebDriver driver) {
     this.driver = driver;
@@ -26,4 +26,5 @@ public class GuiceComponentsModule extends AbstractModule {
   public EducationComponent getEducationComponent() {
     return new EducationComponent(driver);
   }
+
 }

@@ -13,32 +13,27 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.events.EventFiringDecorator;
 import org.openqa.selenium.support.events.WebDriverListener;
 
+import java.net.MalformedURLException;
+
 public class UIExtension implements BeforeEachCallback, AfterEachCallback {
 
-  private Injector injector = null;
+
+  private static final ThreadLocal<WebDriver> DRIVER = new ThreadLocal<>();
 
   @Override
   public void afterEach(ExtensionContext context) {
-    WebDriver driver = injector.getInstance(WebDriver.class);
-    if (driver != null) {
-      driver.quit();
+    WebDriver webDriver = DRIVER.get();
+    if (webDriver != null) {
+      webDriver.quit();
+      DRIVER.remove();
     }
   }
 
   @Override
-  public void beforeEach(ExtensionContext context) {
-    WebDriver baseDriver = new WebDriverFactory().create();
-
-    // оборачиваем в listener
-    WebDriverListener listener = new MouseListener(baseDriver);
-    WebDriver decoratedDriver = new EventFiringDecorator(listener).decorate(baseDriver);
-
-    // передаём уже обёрнутый драйвер
-    injector = Guice.createInjector(
-        new GuicePagesModule(decoratedDriver),
-        new GuiceComponentsModule(decoratedDriver)
-    );
-
+  public void beforeEach(ExtensionContext context) throws MalformedURLException {
+    WebDriver webDriver = new WebDriverFactory().create();
+    DRIVER.set(webDriver);
+    Injector injector = Guice.createInjector(new GuicePagesModule(webDriver), new GuiceComponentsModule(webDriver));
     injector.injectMembers(context.getTestInstance().get());
   }
 }

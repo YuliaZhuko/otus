@@ -16,13 +16,11 @@ public class AbsCommon {
   protected Waiters waiters;
 
   protected AnnotationUtils annotationUtils;
-  public ActionUtils actionUtils;
 
 
   public AbsCommon(WebDriver driver) {
     this.driver = driver;
     this.annotationUtils = new AnnotationUtils();
-    this.actionUtils = new ActionUtils(driver);
     this.waiters = new Waiters(driver);
     PageFactory.initElements(driver, this);
 

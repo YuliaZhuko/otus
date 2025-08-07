@@ -9,7 +9,7 @@ import pages.MainPage;
 
 public class GuicePagesModule extends AbstractModule {
 
-  private WebDriver driver = null;
+  private final WebDriver driver;
 
   public GuicePagesModule(WebDriver driver) {
     this.driver = driver;

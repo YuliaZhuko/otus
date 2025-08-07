@@ -17,7 +17,8 @@ public class HeaderEducationComponent extends AbsBaseBlock {
   private WebElement educationField;
 
   public void moveToEducationField() {
-    waitForComponentVisibility();
-    actionUtils.moveToElement(educationField);
+
+    educationField.click();
+
   }
 }
