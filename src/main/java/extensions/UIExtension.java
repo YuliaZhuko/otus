@@ -3,16 +3,12 @@ package extensions;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import factory.WebDriverFactory;
-import listeners.MouseListener;
 import modules.GuiceComponentsModule;
 import modules.GuicePagesModule;
 import org.junit.jupiter.api.extension.AfterEachCallback;
 import org.junit.jupiter.api.extension.BeforeEachCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.events.EventFiringDecorator;
-import org.openqa.selenium.support.events.WebDriverListener;
-
 import java.net.MalformedURLException;
 
 public class UIExtension implements BeforeEachCallback, AfterEachCallback {
