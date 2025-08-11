@@ -26,6 +26,7 @@ public class WebDriverFactory {
           driver = new RemoteWebDriver(new URL(vm), new ChromeSettings().setting());
         } else {
           driver = new ChromeDriver(new ChromeSettings().setting());
+          System.out.println("Remote WebDriver URL: " + vm);
         }
         break;
       case "firefox":
