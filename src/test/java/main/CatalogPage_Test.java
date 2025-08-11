@@ -22,9 +22,9 @@ public class CatalogPage_Test {
   @DisplayName("Open course and check title")
   public void checkCourceName() {
     catalogPage.open("catalog", "courses");
-    catalogPage.findCourceByName(CourcesData.SRE_practice);
-    catalogPage.clickCourse(CourcesData.SRE_practice);
-    catalogPage.checkCoursePageTitle(CourcesData.SRE_practice);
+    catalogPage.findCourceByName(CourcesData.QA_Engineer_Basic);
+    catalogPage.clickCourse(CourcesData.QA_Engineer_Basic);
+    catalogPage.checkCoursePageTitle(CourcesData.QA_Engineer_Basic);
   }
 
 
@@ -38,17 +38,18 @@ public class CatalogPage_Test {
 
     catalogPage.assertCoursesMatch(
         List.of(
-            CourcesData.SRE_practice
+            CourcesData.QA_Engineer_Basic,
+            CourcesData.ARTIST_3D,
+            CourcesData.Network_Engineer,
+            CourcesData.Network_Engineer_Basic
         ),
         earliestCourses
     );
 
     catalogPage.assertCoursesMatch(
         List.of(
-            CourcesData.Design_of_networks_TSOD,
-            CourcesData.Android_Developer,
-            CourcesData.Android_Developer_Basic,
-            CourcesData.Golang_Developer_Professional
+            CourcesData.Devops
+
         ),
         latestCourses
     );

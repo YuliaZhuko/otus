@@ -4,11 +4,12 @@ import java.time.LocalDate;
 
 public enum CourcesData {
 
-  SRE_practice("SRE практики и инструменты", CourceTypeData.Programmer, LocalDate.parse("2025-07-28")),
-  Golang_Developer_Professional("Golang Developer. Professional", CourceTypeData.Programmer, LocalDate.parse("2025-07-30")),
-  Android_Developer_Basic("Android Developer. Basic", CourceTypeData.Programmer, LocalDate.parse("2025-07-30")),
+  QA_Engineer_Basic("QA Engineer. Basic", CourceTypeData.Programmer, LocalDate.parse("2025-07-29")),
+  ARTIST_3D("QA Engineer. Basic", CourceTypeData.Programmer, LocalDate.parse("2025-07-29")),
+  Network_Engineer_Basic("Network Engineer. Basic", CourceTypeData.Programmer, LocalDate.parse("2025-07-29")),
+  Network_Engineer("Network Engineer", CourceTypeData.Programmer, LocalDate.parse("2025-07-29")),
   Design_of_networks_TSOD("Дизайн сетей ЦОД", CourceTypeData.Programmer, LocalDate.parse("2025-07-30")),
-  Android_Developer("Android Developer", CourceTypeData.Programmer, LocalDate.parse("2025-07-30"));
+  Devops("DevOps практики и инструменты", CourceTypeData.Programmer, LocalDate.parse("2025-08-06"));
 
 
   private String name;
