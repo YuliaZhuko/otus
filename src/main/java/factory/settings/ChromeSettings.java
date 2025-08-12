@@ -11,6 +11,7 @@ public class ChromeSettings implements IBrowserSettings {
     chromeOptions.addArguments("--start-fullscreen");
     chromeOptions.addArguments("--no-sandbox");
     chromeOptions.addArguments("--disable-dev-shm-usage");
+    chromeOptions.setCapability("enableVideo", true);
     return chromeOptions;
   }
 }
