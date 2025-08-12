@@ -19,7 +19,8 @@ public class WebDriverFactory {
 
   public WebDriver create() throws MalformedURLException {
     WebDriver driver;
-
+    System.out.println("runMode = " + runMode);
+    System.out.println("url = " + vm);
     switch (browserName) {
       case "chrome":
         if ("remote".equals(runMode)) {
