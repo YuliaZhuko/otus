@@ -1,6 +1,8 @@
 package factory.settings;
 
 import org.openqa.selenium.chrome.ChromeOptions;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class ChromeSettings implements IBrowserSettings {
@@ -11,7 +13,9 @@ public class ChromeSettings implements IBrowserSettings {
     chromeOptions.addArguments("--start-fullscreen");
     chromeOptions.addArguments("--no-sandbox");
     chromeOptions.addArguments("--disable-dev-shm-usage");
-    chromeOptions.setCapability("enableVideo", true);
+    Map<String, Object> selenoidOptions = new HashMap<>();
+    selenoidOptions.put("enableVideo", true);
+    chromeOptions.setCapability("selenoid:options", selenoidOptions);
     return chromeOptions;
   }
 }
