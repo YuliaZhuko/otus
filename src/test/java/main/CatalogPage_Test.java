@@ -22,9 +22,9 @@ public class CatalogPage_Test {
   @DisplayName("Open course and check title")
   public void checkCourceName() {
     catalogPage.open("catalog", "courses");
-    catalogPage.findCourceByName(CourcesData.QA_Engineer_Basic);
-    catalogPage.clickCourse(CourcesData.QA_Engineer_Basic);
-    catalogPage.checkCoursePageTitle(CourcesData.QA_Engineer_Basic);
+    catalogPage.findCourceByName(CourcesData.C_Developer_Professional);
+    catalogPage.clickCourse(CourcesData.C_Developer_Professional);
+    catalogPage.checkCoursePageTitle(CourcesData.C_Developer_Professional);
   }
 
 
@@ -38,17 +38,32 @@ public class CatalogPage_Test {
 
     catalogPage.assertCoursesMatch(
         List.of(
-            CourcesData.QA_Engineer_Basic,
-            CourcesData.ARTIST_3D,
-            CourcesData.Network_Engineer,
-            CourcesData.Network_Engineer_Basic
+            CourcesData.NLP_Natural_Language_Processing,
+            CourcesData.System_and_Business_Analyze,
+            CourcesData.Pentest,
+            CourcesData.C_Developer_Professional,
+            CourcesData.Platform_Kubernetes,
+            CourcesData.Rust_Developer_Professional,
+            CourcesData.System_Analyst,
+            CourcesData.System_Analyst_Advanced,
+            CourcesData.System_Analyst_Basic,
+            CourcesData.iOS_Developer_Professional
         ),
         earliestCourses
     );
 
     catalogPage.assertCoursesMatch(
         List.of(
-            CourcesData.Devops
+            CourcesData.NLP_Natural_Language_Processing,
+            CourcesData.System_and_Business_Analyze,
+            CourcesData.Pentest,
+            CourcesData.C_Developer_Professional,
+            CourcesData.Platform_Kubernetes,
+            CourcesData.Rust_Developer_Professional,
+            CourcesData.System_Analyst,
+            CourcesData.System_Analyst_Advanced,
+            CourcesData.System_Analyst_Basic,
+            CourcesData.iOS_Developer_Professional
 
         ),
         latestCourses

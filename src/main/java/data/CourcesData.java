@@ -4,12 +4,16 @@ import java.time.LocalDate;
 
 public enum CourcesData {
 
-  QA_Engineer_Basic("QA Engineer. Basic", CourceTypeData.Programmer, LocalDate.parse("2025-07-29")),
-  ARTIST_3D("QA Engineer. Basic", CourceTypeData.Programmer, LocalDate.parse("2025-07-29")),
-  Network_Engineer_Basic("Network Engineer. Basic", CourceTypeData.Programmer, LocalDate.parse("2025-07-29")),
-  Network_Engineer("Network Engineer", CourceTypeData.Programmer, LocalDate.parse("2025-07-29")),
-  Design_of_networks_TSOD("Дизайн сетей ЦОД", CourceTypeData.Programmer, LocalDate.parse("2025-07-30")),
-  Devops("DevOps практики и инструменты", CourceTypeData.Programmer, LocalDate.parse("2025-08-06"));
+  iOS_Developer_Professional("iOS Developer. Professional", CourceTypeData.Programmer, LocalDate.parse("2025-08-27")),
+  Platform_Kubernetes("Инфраструктурная платформа на основе Kubernetes", CourceTypeData.Programmer, LocalDate.parse("2025-08-27")),
+  Pentest("Пентест. Инструменты и методы проникновения в действии", CourceTypeData.Programmer, LocalDate.parse("2025-08-27")),
+  System_Analyst_Advanced("Системный аналитик. Advanced", CourceTypeData.Programmer, LocalDate.parse("2025-08-27")),
+  System_Analyst("Системный аналитик", CourceTypeData.Programmer, LocalDate.parse("2025-08-27")),
+  System_Analyst_Basic("Системный аналитик. Basic", CourceTypeData.Programmer, LocalDate.parse("2025-08-27")),
+  NLP_Natural_Language_Processing("NLP / Natural Language Processing", CourceTypeData.Programmer, LocalDate.parse("2025-08-27")),
+  C_Developer_Professional("C++ Developer. Professional", CourceTypeData.Programmer, LocalDate.parse("2025-08-27")),
+  System_and_Business_Analyze("Системный и бизнес-анализ", CourceTypeData.Programmer, LocalDate.parse("2025-08-27")),
+  Rust_Developer_Professional("Rust Developer. Professional", CourceTypeData.Programmer, LocalDate.parse("2025-08-27"));
 
 
   private String name;
